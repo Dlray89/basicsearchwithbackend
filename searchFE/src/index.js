@@ -1,20 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {createClient, Provider} from 'url';
+import {createClient, Provider} from 'urql';
 
-const port= process.env.PORT;
 
 const client= createClient({
-  url: `http://localhost:${port}/graphql`,
-  fetchOptions: () => {
-    const token= getToken();
-    return {
-      headers: {authorization: token ? `Bearer ${token}` : ''}
-    }//end return
-  }//end fetchOptions
+  url: `http://localhost:5000`
+  //** add this code back for auth */
+  // fetchOptions: () => {
+  //   const token= getToken();
+  //   return {
+  //     headers: {authorization: token ? `Bearer ${token}` : ''}
+  //   }
+  // }
 });// end client
 
 ReactDOM.render(
