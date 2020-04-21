@@ -6,7 +6,7 @@ import {createClient, Provider} from 'urql';
 
 
 const client= createClient({
-  url: `http://localhost:5000`
+  url: `https://4000-c98dd7ad-accc-4ee6-8b01-2779ee5aa5db.ws-us02.gitpod.io/`
   //** add this code back for auth */
   // fetchOptions: () => {
   //   const token= getToken();
