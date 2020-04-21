@@ -5,15 +5,15 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 const Search = () => {
-    const [filter, setFilter] = React.useState('')
+  const [filter, setFilter] = React.useState('')
 }
 
-const search = React.useCallback(() => {}, [])
+const search = React.useCallback(() => { }, [])
 const products = []
 
-return(
-    <div>
-         <Autocomplete
+return (
+  <div>
+    <Autocomplete
       id="combo-box-demo"
       options={products}
       getOptionLabel={(option) => option.title}
@@ -22,9 +22,9 @@ return(
       onChange={e => setFilter(e.target.value)}
     />
     {products.map((product, index) => {
-        <Product key={product.id} product={product} index={index} />
+      <Product key={product.id} product={product} index={index} />
     })}
-    </div>
+  </div>
 )
 
 export default Search

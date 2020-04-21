@@ -1,12 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {createClient, Provider} from 'urql';
+
+
+const client= createClient({
+  url: `http://localhost:5000`
+  //** add this code back for auth */
+  // fetchOptions: () => {
+  //   const token= getToken();
+  //   return {
+  //     headers: {authorization: token ? `Bearer ${token}` : ''}
+  //   }
+  // }
+});// end client
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider value= {client}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
