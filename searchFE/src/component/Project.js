@@ -9,7 +9,7 @@ const useStyles = makeStyles({
         margin: "2% auto",
         padding: "2%",
         textAlign:'center',
-        background:" linear-gradient(to left, #bdc3c7, #2c3e50);",
+        background:" linear-gradient(to left, #000000, #434343)",
         color:"white"
         
     }

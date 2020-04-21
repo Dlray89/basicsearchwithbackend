@@ -10,7 +10,7 @@ const useStyles = makeStyles({
         textAlign: "center"
     },
     Appbar: {
-        background:" linear-gradient(to left, #bdc3c7, #2c3e50);"
+        background:" linear-gradient(to left, #000000, #434343)"
     }
 })
 
