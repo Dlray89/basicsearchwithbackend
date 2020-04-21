@@ -12,7 +12,8 @@ const useStyles = makeStyles({
         background:" linear-gradient(to left, #000000, #434343)",
         color:"white"
         
-    }
+    },
+   
 })
 
 
@@ -22,7 +23,13 @@ const Project = ({ project }) => {
     return(
  <div>
         <Card className={classes.root}>
-            {project.name} ({project.description})
+        Project: <br />
+            {project.name}
+             <br />
+             <br />
+            Project Details: 
+            <br />
+             ({project.description})
         </Card>
     </div>
     )

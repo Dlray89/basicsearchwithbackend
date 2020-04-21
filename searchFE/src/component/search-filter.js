@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from "urql"
 import gql from "graphql-tag"
-import {TextField, makeStyles} from '@material-ui/core';
+import {Button, TextField, makeStyles} from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Project from "./Project"
 
@@ -44,13 +44,13 @@ return (
   <div>
     <Autocomplete
     onChange={e => setFilter(e.target.value)}
+    
       id="combo-box-demo"
       options={projects}
       className={classes.root}
       getOptionLabel={(option) => option.title}
       style={{ width: 300 }}
       renderInput={(params) => <TextField {...params} label="Search/Filter" variant="outlined" />}
-      
     />
     <div>
  {projects.map((project, index) => (
