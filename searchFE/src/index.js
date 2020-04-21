@@ -5,14 +5,11 @@ import * as serviceWorker from './serviceWorker';
 import {Client, Provider, dedupExchange, fetchExchange } from 'urql';
 import { cacheExchange } from "@urql/exchange-graphcache"
 
-
 const cache = cacheExchange({})
 
 const client=  new Client({
-  url: `https://4000-c7641b3a-5cc2-4046-b7ef-eb0a379f6695.ws-us02.gitpod.io/`,
+  url: `http://localhost:5000`,
   exchanges: [dedupExchange, cache, fetchExchange]
-
-
 });// end client
 
 ReactDOM.render(
