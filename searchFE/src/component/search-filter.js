@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from "urql"
 import gql from "graphql-tag"
-import {TextField, makeStyles} from '@material-ui/core';
+import {Button, TextField, makeStyles} from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Project from "./Project"
 
@@ -27,18 +27,22 @@ query FeedSearchQuery($filter: String!) {
 const Search = () => {
     const classes = useStyles()
   const [filter, setFilter] = React.useState('')
+
   const [result, executeQuery] = useQuery({
       query: FEED_SEARCH,
       variables: { filter },
-      pause: true
+      pause: true,
+      
   })
+     console.log("Result", result)
 
 
 const search = React.useCallback(() => {
     executeQuery()
 }, [executeQuery])
 
-const projects = result.data ? result.data.feed.projects : []
+const projects = result.data ? result.data.feed : []
+console.log("Projects",projects)
 
 return (
   <div>
@@ -51,7 +55,7 @@ return (
       style={{ width: 300 }}
       renderInput={(params) => <TextField {...params} label="Search/Filter" variant="outlined" />}
       
-    />
+    /><Button onClick={search}>Search</Button>
     <div>
  {projects.map((project, index) => (
       <Project key={project.id} project={project} index={index} />
