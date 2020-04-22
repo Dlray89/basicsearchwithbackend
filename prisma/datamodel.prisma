@@ -1,5 +1,0 @@
-type Project {
-    id: ID! @id
-    name: String!
-    description: String!
-}

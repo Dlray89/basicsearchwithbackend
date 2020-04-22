@@ -1,9 +1,0 @@
-
-#endpoint: ''
-endpoint: https://eu1.prisma.sh/david-979c00/basicsearchwithbackend/dev
-
-datamodel: datamodel.prisma
-
-generate: 
-    - generator: javascript-client
-      output: ./src/generated/prisma.client

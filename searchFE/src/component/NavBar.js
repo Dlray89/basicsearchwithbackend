@@ -8,12 +8,13 @@ const useStyles = makeStyles({
     },
     title: {
         flexGrow:1,
-        textAlign: "center"
+        textAlign: "left"
     },
     Appbar: {
-        background:" linear-gradient(to left, #000000, #434343)"
+        background:"linear-gradient(to right, #4b6cb7, #182848)"
     },
-    Button: {
+    Links: {
+        textDecoration:"none",
         color: "White"
     }
 })
@@ -25,13 +26,10 @@ function NavBar (){
             <AppBar className={classes.Appbar} position="static">
             <Toolbar>
                 <Typography className={classes.title} variant="h6">
-                    RAGP(React,Apollo, GraphQL, Prisma )
+                    LABS 23
                 </Typography>
-                <Button className={classes.Button}><Link to="/">Home</Link></Button>        
-                <Button className={classes.Button}><Link to="/React">React</Link></Button>
-                <Button className={classes.Button}><Link to="/Apollo">Apollo</Link></Button>
-                <Button className={classes.Button}><Link to="/GraphQL">GraphQL</Link></Button>
-                <Button className={classes.Button}><Link to="/Prisma">Prisma</Link></Button>
+                <Button className={classes.Button}><Link className={classes.Links} to="/">Home</Link></Button>        
+                <Button className={classes.Button}><Link className={classes.Links} to="/React">Tech Docs</Link></Button>
             </Toolbar>
             </AppBar>
 
