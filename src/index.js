@@ -9,10 +9,6 @@ const Mutation = require("./resolvers/mutation")
 
 const opts= {
   port: process.env.PORT,
-  "origin": ["http://localhost:3000"],
-  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-  "preflightContinue": true,
-  "optionsSuccessStatus": 204
 }
 
 const resolvers = {

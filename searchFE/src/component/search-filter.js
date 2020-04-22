@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useQuery } from "urql"
 import gql from "graphql-tag"
 import { TextField, makeStyles } from '@material-ui/core';
@@ -49,16 +49,15 @@ const Search = () => {
   }, [executeQuery])
 
   const projects = result.data ? result.data.feed : [];
+  
   console.log('projects:', projects);
   const handleChange = e => {
     console.log("change: ", e.target.value);
   }
 
-
-  const handleSubmit = e => {
-    console.log('submitted');
-
-  }
+  useEffect(() => {
+    execSearch()
+  }, [])
 
   return (
     <div>
