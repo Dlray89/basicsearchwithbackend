@@ -8,7 +8,7 @@ import { cacheExchange } from "@urql/exchange-graphcache"
 const cache = cacheExchange({})
 
 const client=  new Client({
-  url: `http://localhost:5000`,
+  url: 'http://localhost:5000',
   exchanges: [dedupExchange, cache, fetchExchange]
 });// end client
 
