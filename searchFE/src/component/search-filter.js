@@ -38,22 +38,21 @@ const Search = () => {
   const projects = result.data ? result.data.feed : [];
   let timer;
   const handleChange = e => {
+    //reset timer on each key stroke
     window.clearTimeout(timer);
-    console.log('handleChange');
     setFilter(e.target.value);
-    console.log('value: ', e.target.value);
     e.persist();
   }//end handleChange
 
   const handleSubmit = e => {
-    console.log('submitted');
     e.preventDefault();
+    //clear the submit timer and submit form
     window.clearTimeout(timer);
     execSearch();
   }
 
   useEffect(() => {
-    console.log('useEffect');
+    //delay then submit form/or hit enter to submit immediately
     timer= window.setTimeout(() => {
       execSearch();
     }, 2000)
