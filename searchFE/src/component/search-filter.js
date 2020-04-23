@@ -11,16 +11,6 @@ const useStyles = makeStyles({
   }
 })
 
-const FEED_QUERY = gql`
-{
-    feed {
-      id
-      name
-      description
-    }
-}
-`
-
 const FEED_SEARCH = gql`
   query FeedSearchQuery($filter: String!) {
     feed(filter: $filter) {
@@ -70,23 +60,11 @@ const Search = () => {
           id='search'
           placeholder='Search'
         />
-        <button onClick={execSearch} type='submit'>Submit</button>
       </form>
-
-
-      {/* onChange={e => console.log(e.target.value)}
-        id="combo-box-demo"
-        options={projects}
-        className={classes.root}
-        getOptionLabel={(option) => option.title}
-        style={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="Search/Filter" variant="outlined" />}
-      /> */}
 
       {projects.map((project, index) => (
         <Project key={project.id} project={project} index={index} />
       ))}
-
 
     </div>
   )
