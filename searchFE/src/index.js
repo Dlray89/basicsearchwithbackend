@@ -10,7 +10,7 @@ import { InMemoryCache} from "apollo-cache-inmemory"
 
 //create httplink to ApolloClient with the GraphQL API
 const httpLink = createHttpLink({
-    url:"https://4000-eae63fca-71df-4457-93bf-eb2cfcb2c0d5.ws-us02.gitpod.io/"
+    url:"http://localhost:4000/"
 })
 
 
