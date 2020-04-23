@@ -36,6 +36,8 @@ const Search = () => {
   }, [executeQuery])
 
   const projects = result.data ? result.data.feed : [];
+  
+  //initialize the timer var
   let timer;
   const handleChange = e => {
     //reset timer on each key stroke
@@ -45,6 +47,7 @@ const Search = () => {
   }//end handleChange
 
   const handleSubmit = e => {
+    //hitting enter key submits immediately
     e.preventDefault();
     //clear the submit timer and submit form
     window.clearTimeout(timer);
