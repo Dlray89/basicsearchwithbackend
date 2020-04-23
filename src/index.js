@@ -1,4 +1,5 @@
 require('dotenv').config();
+const cors= require('cors');
 
 const {GraphQLServer } = require("graphql-yoga")
 const { prisma } = require("../prisma/src/generated/prisma.client")
@@ -7,7 +8,7 @@ const Mutation = require("./resolvers/mutation")
 // const Project = require("./resolvers/Projects")
 
 const opts= {
-  port: process.env.PORT
+  port: process.env.PORT,
 }
 
 const resolvers = {
