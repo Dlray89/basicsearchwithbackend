@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react';
-import { useQuery } from "urql"
-import gql from "graphql-tag"
+import React, { useEffect, useState } from 'react';
+import { useQuery } from "urql";
+import gql from "graphql-tag";
 import { TextField, makeStyles } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import Project from "./Project"
+import Project from "./Project";
 
 const useStyles = makeStyles({
   root: {
@@ -22,9 +22,9 @@ const FEED_SEARCH = gql`
 `
 
 const Search = () => {
-  const classes = useStyles()
-  const [filter, setFilter] = React.useState('');
-  // const [result] = useQuery({ query: FEED_QUERY })
+  const classes = useStyles();
+  const [filter, setFilter] = useState('');
+
   const [result, executeQuery] = useQuery({
     query: FEED_SEARCH,
     variables: { filter },
@@ -32,41 +32,53 @@ const Search = () => {
   })
      console.log("Result", result)
 
-
-  console.log('result: ', result);
-
   const execSearch = React.useCallback(() => {
-    executeQuery()
+    executeQuery();
   }, [executeQuery])
 
   const projects = result.data ? result.data.feed : [];
   
-  console.log('projects:', projects);
+  //initialize the timer var
+  let timer;
   const handleChange = e => {
-    console.log("change: ", e.target.value);
+    //reset timer on each key stroke
+    window.clearTimeout(timer);
+    setFilter(e.target.value);
+    e.persist();
+  }//end handleChange
+
+  const handleSubmit = e => {
+    //hitting enter key submits immediately
+    e.preventDefault();
+    //clear the submit timer and submit form
+    window.clearTimeout(timer);
+    execSearch();
   }
 
   useEffect(() => {
-    execSearch()
-  }, [])
+    //delay then submit form/or hit enter to submit immediately
+    timer= window.setTimeout(() => {
+      execSearch();
+    }, 2000)
+  }, [filter])
 
   return (
     <div>
-      <form onSubmit={e => e.preventDefault()}>
-
+      <form onSubmit={handleSubmit}>
         <input
-          onChange={e => setFilter(e.target.value)}
+          onChange={handleChange}
           type='text'
           name='search'
           id='search'
           placeholder='Search'
+          value={filter}
         />
+        {/* <button type= 'submit'>submit</button> */}
       </form>
 
       {projects.map((project, index) => (
         <Project key={project.id} project={project} index={index} />
       ))}
-
     </div>
   )
 }
