@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from "urql";
 import gql from "graphql-tag";
-import { TextField, makeStyles } from '@material-ui/core';
+// import { makeStyles } from '@material-ui/core';
 // import Autocomplete from '@material-ui/lab/Autocomplete';
 import Project from "./Project";
 import './SearchStyles.scss';
 
-const useStyles = makeStyles({
-  root: {
-    margin: "2% auto"
-  }
-})
+// const useStyles = makeStyles({
+//   root: {
+//     margin: "2% auto"
+//   }
+// })
 
 const FEED_SEARCH = gql`
   query FeedSearchQuery($filter: String!) {
@@ -23,7 +23,7 @@ const FEED_SEARCH = gql`
 `
 
 const Search = () => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const [filter, setFilter] = useState('');
   const [filterList, setFilterList] = useState([]);
 
@@ -41,11 +41,11 @@ const Search = () => {
 
   //initialize the timer var
   let timer;
-  const handleChange = e => {
+  const handleChange = async e => {
     //reset timer on each key stroke
-    window.clearTimeout(timer);
-    setFilter(e.target.value);
     e.persist();
+    window.clearTimeout(timer);
+    await setFilter(e.target.value);
   }//end handleChange
 
   const handleSubmit = e => {
@@ -58,7 +58,7 @@ const Search = () => {
         ...filterList,
         filter
       ])
-    }
+    }//end if
     setFilter('')
     execSearch();
   }//end handleSubmit
@@ -87,6 +87,7 @@ const Search = () => {
 
   useEffect(() => {
     //delay then submit form/or hit enter to submit immediately
+    //eslint-disable-next-line
     timer = window.setTimeout(() => {
       // execSearch();
       handleSubmit();
@@ -103,7 +104,7 @@ const Search = () => {
                 <span className='tag'
                   key= {`${filterItem}_{Math.random()}`}
                   >
-                  {`#${filterItem}`}
+                  {`${filterItem}`}
                   <span className='closeTag'
                     onClick= {() => {removeTag(`${filterItem}`)}}
                   >X
