@@ -29,6 +29,7 @@ const Search = () => {
 
   const [result, executeQuery] = useQuery({
     query: FEED_SEARCH,
+    // eventually we want to send filterList (array) here for search terms/tags list
     variables: { filter },
     pause: true
   })
@@ -73,6 +74,7 @@ const Search = () => {
   }//end removeTag
 
   const handleFocus = () => {
+    // handles the search icon
     const searchInput = document.getElementById('search');
     const icon = document.querySelector('i');
 
